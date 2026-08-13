@@ -1,5 +1,12 @@
 # Gesture Synth Fork
 
+## 🎵 Live Demo
+
+👉 **[Try Gesture Synth Fork](https://gesture-synth-fork.vercel.app/)**
+
+The live version is hosted on Vercel.
+
+
 A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a simpler interface, custom chord control, and pitch transposition for musicians who are comfortable with familiar chord shapes or using a capo.
 
 > **Want the original Gesture Synth?**
