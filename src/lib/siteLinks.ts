@@ -15,7 +15,7 @@ export const ERIC = {
   href: "https://www.instagram.com/indecisive.eric",
 } as const
 
-export const GITHUB_REPO = "https://github.com/Ekmand/music-synth"
+export const GITHUB_REPO = "https://github.com/saud117/gesture-synth-fork"
 export const GITHUB_CONTRIBUTORS = `${GITHUB_REPO}/graphs/contributors`
 
 export const COMMUNITY_HOME = "https://community.gesturesynth.com"
