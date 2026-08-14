@@ -7,6 +7,16 @@
 The live version is hosted on Vercel.
 
 
+## 🖥️ Screenshots
+
+### Main Interface
+
+![Gesture Synth Fork main interface](images/main-interface.png)
+
+### Settings & Custom Chords
+
+![Gesture Synth Fork settings and custom chords](images/settings-panel.png)
+
 A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a simpler interface, custom chord control, and pitch transposition for musicians who are comfortable with familiar chord shapes or using a capo.
 
 > **Want the original Gesture Synth?**
