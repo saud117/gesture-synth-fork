@@ -154,6 +154,76 @@ When you open the application:
 
 The automatic first-visit tutorial has been disabled in this fork.
 
+## 🐳 Docker
+
+Gesture Synth Fork can also be built and run using Docker.
+
+### Requirements
+
+Make sure Docker is installed and running.
+
+Check your Docker installation with:
+
+```bash
+docker --version
+```
+
+### Build the Docker Image
+
+From the project directory:
+
+```bash
+docker build -t gesture-synth-fork .
+```
+
+This builds the application and packages the production build into an Nginx container.
+
+### Run the Container
+
+Start the container with:
+
+```bash
+docker run --rm -p 8080:80 gesture-synth-fork
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
+
+The application will be served from the Docker container.
+
+### Stop the Container
+
+If the container is running in the terminal, press:
+
+```text
+Ctrl + C
+```
+
+The `--rm` option automatically removes the stopped container.
+
+### Docker Architecture
+
+The Docker image uses a multi-stage build:
+
+```text
+Node.js
+   ↓
+npm install
+   ↓
+npm run build
+   ↓
+dist/
+   ↓
+Nginx
+   ↓
+Port 8080
+```
+
+The final container only contains the production build and Nginx, keeping the runtime image smaller and separate from the Node.js build environment.
+
 ## 🎼 Scale Display
 
 The current scale is shown at the top center of the interface.
