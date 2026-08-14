@@ -22,7 +22,6 @@ A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a
 - 🔊 Changed the audio/volume visualizer from teal to **blue**.
 - 📚 Disabled the automatic first-visit tutorial panel.
 - ⚙️ Simplified the settings interface.
-- 🔗 Added fork credits and social links.
 
 ## 🎸 Custom Chords
 
