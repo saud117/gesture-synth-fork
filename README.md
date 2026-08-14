@@ -265,7 +265,6 @@ The interface includes:
 - Custom chord controls
 - Pitch/transposition controls
 - Simplified settings
-- Fork and social links
 
 ## 🔄 Original Project
 
