@@ -6,7 +6,6 @@
 
 The live version is hosted on Vercel.
 
-
 ## 🖥️ Screenshots
 
 ### Main Interface
@@ -24,14 +23,26 @@ A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a
 
 ## ✨ What's Different in This Fork?
 
-- 🎸 **Removed the left-hand tilt feature** from the original interaction system.
-- 🎵 **Added Pitch / Transpose control** to move the whole instrument by semitones, up to 12 half-steps.
-- 🎸 **Added custom chord configuration**.
-- 🎼 The **first custom chord determines the displayed scale**.
-- 🎨 Redesigned the interface with a **dark black and blue** theme.
-- 🔊 Changed the audio/volume visualizer from teal to **blue**.
-- 📚 Disabled the automatic first-visit tutorial panel.
-- ⚙️ Simplified the settings interface.
+* 🎸 **Removed the left-hand tilt feature** from the original interaction system.
+* 🎵 **Added Pitch / Transpose control** to move the whole instrument by semitones, up to 12 half-steps.
+* 🎸 **Added custom chord configuration**.
+* 🎼 The **first custom chord determines the displayed scale**.
+* 🎨 Redesigned the interface with a **dark black and blue** theme.
+* 🔊 Changed the audio/volume visualizer from teal to **blue**.
+* 📚 Disabled the automatic first-visit tutorial panel.
+* ⚙️ Simplified the settings interface.
+
+## 🚧 To-Do
+
+* [ ] More refined UI
+* [ ] Add instrument selection
+
+  * [ ] 🎸 Guitar
+  * [ ] 🎛️ Synth
+  * [ ] 🎹 Piano
+* [ ] Add sequencer
+* [ ] Add tempo / BPM control
+* [ ] Add metronome
 
 ## 🎸 Custom Chords
 
@@ -70,10 +81,10 @@ The Pitch control transposes the whole instrument by semitones.
 
 This feature is especially useful for guitarists who:
 
-- Are comfortable with open chords.
-- Prefer to keep the same familiar chord shapes.
-- Use a capo.
-- Want to change the sounding key without changing their chord shapes.
+* Are comfortable with open chords.
+* Prefer to keep the same familiar chord shapes.
+* Use a capo.
+* Want to change the sounding key without changing their chord shapes.
 
 For example, if the current scale is:
 
@@ -95,11 +106,11 @@ The chord/audio output and scale display move together with the pitch.
 
 Before running Gesture Synth Fork, make sure you have:
 
-- [Node.js](https://nodejs.org/) installed
-- npm (included with Node.js)
-- A modern web browser such as Chrome, Firefox, or Edge
-- A working webcam
-- Speakers or headphones
+* [Node.js](https://nodejs.org/) installed
+* npm (included with Node.js)
+* A modern web browser such as Chrome, Firefox, or Edge
+* A working webcam
+* Speakers or headphones
 
 ### Installation
 
@@ -253,8 +264,8 @@ Scale: G major
 
 The scale updates when:
 
-- The first custom chord changes.
-- The pitch changes.
+* The first custom chord changes.
+* The pitch changes.
 
 ## 🔊 Audio Visualizer
 
@@ -268,13 +279,13 @@ Gesture Synth Fork uses a dark black and blue visual style.
 
 The interface includes:
 
-- Dark black background
-- Blue accent colors
-- Blue audio visualizer
-- Compact scale display
-- Custom chord controls
-- Pitch/transposition controls
-- Simplified settings
+* Dark black background
+* Blue accent colors
+* Blue audio visualizer
+* Compact scale display
+* Custom chord controls
+* Pitch/transposition controls
+* Simplified settings
 
 ## 🔄 Original Project
 
@@ -304,11 +315,11 @@ The original project and its underlying work remain credited to the original dev
 
 ## 🌐 Social Links
 
-- **GitHub:** https://github.com/saud117
-- **LinkedIn:** https://www.linkedin.com/in/saudnasir
-- **Instagram:** https://www.instagram.com/saudnasir____
-- **TikTok — Fretful Melodies:** https://www.tiktok.com/@fretfull_melodies
-- **YouTube — Fretful Melodies:** https://youtube.com/@fretfulmelodies
+* **GitHub:** https://github.com/saud117
+* **LinkedIn:** https://www.linkedin.com/in/saudnasir
+* **Instagram:** https://www.instagram.com/saudnasir____
+* **TikTok — Fretful Melodies:** https://www.tiktok.com/@fretfull_melodies
+* **YouTube — Fretful Melodies:** https://youtube.com/@fretfulmelodies
 
 ## 📦 Production Build
 
@@ -340,13 +351,13 @@ If you redistribute or further modify this fork, please preserve the original pr
 
 ## 🔗 Project Links
 
-**Gesture Synth Fork:**  
+**Gesture Synth Fork:**
 https://github.com/saud117/gesture-synth-fork
 
-**Original Gesture Synth:**  
+**Original Gesture Synth:**
 https://www.gesturesynth.com/
 
 ---
 
-**Gesture Synth Fork**  
+**Gesture Synth Fork**
 **Fork by Saud Nasir**
