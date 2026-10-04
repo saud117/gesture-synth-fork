@@ -42,9 +42,9 @@ A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a
   * [x] 🎸 Guitar
   * [x] 🎛️ Synth
   * [x] 🎹 Piano
-* [ ] Add sequencer
-* [ ] Add tempo / BPM control
-* [ ] Add metronome
+* [x] Add sequencer
+* [x] Add tempo / BPM control
+* [x] Add metronome
 
 ## 🎸 Custom Chords
 
