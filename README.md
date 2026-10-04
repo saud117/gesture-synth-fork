@@ -31,15 +31,17 @@ A customized fork of [Gesture Synth](https://www.gesturesynth.com/) focused on a
 * 🔊 Changed the audio/volume visualizer from teal to **blue**.
 * 📚 Disabled the automatic first-visit tutorial panel.
 * ⚙️ Simplified the settings interface.
+* 🎹 **Added an instrument dropdown** (Synth, Piano, Guitar). Piano and guitar play as held chords for as long as you hold the gesture.
+* 🎛️ Refreshed UI: chord ring with level bars, grouped right-hand panel, and a collapsible settings menu with chord validation.
 
 ## 🚧 To-Do
 
-* [ ] More refined UI
-* [ ] Add instrument selection
+* [x] More refined UI
+* [x] Add instrument selection
 
-  * [ ] 🎸 Guitar
-  * [ ] 🎛️ Synth
-  * [ ] 🎹 Piano
+  * [x] 🎸 Guitar
+  * [x] 🎛️ Synth
+  * [x] 🎹 Piano
 * [ ] Add sequencer
 * [ ] Add tempo / BPM control
 * [ ] Add metronome

@@ -1,4 +1,8 @@
+import { startChord, usesVoices, type Instrument, type SustainVoice } from "./instruments"
+
 export class SynthEngine {
+  private instrument: Instrument = "synth"
+  private voices: SustainVoice[] = []
   private ctx: AudioContext | null = null
   private filter: BiquadFilterNode | null = null
   private waveShaper: WaveShaperNode | null = null
@@ -98,6 +102,21 @@ export class SynthEngine {
     this.masterGain.gain.linearRampToValueAtTime(t, this.ctx.currentTime + 0.05)
   }
 
+  getInstrument(): Instrument {
+    return this.instrument
+  }
+
+  setInstrument(next: Instrument) {
+    if (this.instrument === next) return
+    this.stopChordOscillators()
+    this.instrument = next
+  }
+
+  private releaseVoices() {
+    for (const v of this.voices) v.stop()
+    this.voices = []
+  }
+
   updateFilterSweep(tilt: number) {
     if (!this.filter || !this.ctx) return
     let freq = 1200
@@ -120,6 +139,14 @@ export class SynthEngine {
     if (!this.ctx || !this.waveShaper || freqs.length === 0) return
     this.stopTheremin()
     const key = freqs.map((f) => f.toFixed(1)).join(",")
+    if (usesVoices(this.instrument)) {
+      // Held-chord instruments: start the whole chord together, keep it until the chord changes
+      if (key === this.currentKey) return
+      this.releaseVoices()
+      this.voices = startChord(this.ctx, this.waveShaper, this.instrument, freqs, this.ctx.currentTime)
+      this.currentKey = key
+      return
+    }
     if (key === this.currentKey) return
     this.oscillators.forEach((o) => {
       try { o.stop() } catch { /* already stopped */ }
@@ -165,6 +192,7 @@ export class SynthEngine {
       try { o.stop() } catch { /* already stopped */ }
     })
     this.oscillators = []
+    this.releaseVoices()
     this.currentKey = null
   }
 
