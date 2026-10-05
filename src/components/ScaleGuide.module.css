@@ -12,7 +12,9 @@
 .caption {
   margin: 0 0 0.45rem;
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
   color: var(--text-muted);
 }
 
@@ -31,7 +33,7 @@
   min-height: 4.1rem;
   padding: 0.45rem 0.2rem;
   border-radius: 12px;
-  background: rgba(8, 12, 18, 0.78);
+  background: rgba(8, 12, 18, 0.68);
   border: 1px solid var(--stroke);
   backdrop-filter: blur(10px);
   transition:
@@ -42,9 +44,9 @@
 }
 
 .pad[data-active="true"] {
-  background: rgba(30, 64, 140, 0.55);
-  border-color: var(--mint);
-  box-shadow: inset 0 0 0 1px var(--mint);
+  background: var(--mint-dim);
+  border-color: rgba(59, 130, 246, 0.55);
+  box-shadow: 0 0 22px rgba(59, 130, 246, 0.18);
   transform: translateY(-3px);
 }
 
@@ -59,8 +61,8 @@
 }
 
 .hint {
-  font-size: 0.68rem;
-  color: rgba(232, 244, 248, 0.72);
+  font-size: 0.58rem;
+  color: var(--text-muted);
   text-align: center;
   line-height: 1.2;
   max-width: 100%;

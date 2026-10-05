@@ -1,5 +1,3 @@
-import { startChord, usesVoices, type Instrument } from "./instruments"
-
 export type LoopState = "idle" | "countIn" | "recording"
 
 export type LoopFrame = {
@@ -11,7 +9,6 @@ export type LoopFrame = {
   mode: "gesture" | "theremin"
   pitchHz: number
   thereminVol: number
-  instrument?: Instrument
 }
 
 export type StepDisplay = {
@@ -122,18 +119,18 @@ class LoopTrack {
       if (!frame) { i++; continue }
 
       // Key = unique identifier for this chord/pitch combination
-      const key = (frame.mode === "gesture"
+      const key = frame.mode === "gesture"
         ? frame.freqs.map((f) => f.toFixed(1)).join(",")
-        : `t:${frame.pitchHz.toFixed(1)}`) + `|${frame.instrument ?? "synth"}`
+        : `t:${frame.pitchHz.toFixed(1)}`
 
       // Extend run as long as consecutive steps have the same chord
       let j = i + 1
       while (j < totalSteps && this.stepMask[j]) {
         const nf = this.findFrameForStep(j, stepDurMs)
         if (!nf) break
-        const nk = (nf.mode === "gesture"
+        const nk = nf.mode === "gesture"
           ? nf.freqs.map((f) => f.toFixed(1)).join(",")
-          : `t:${nf.pitchHz.toFixed(1)}`) + `|${nf.instrument ?? "synth"}`
+          : `t:${nf.pitchHz.toFixed(1)}`
         if (nk !== key) break
         j++
       }
@@ -161,11 +158,7 @@ class LoopTrack {
       filt.frequency.setValueAtTime(freq, startSec)
       filt.Q.setValueAtTime(q, startSec)
 
-      const inst = frame.instrument ?? "synth"
-      if (frame.mode === "gesture" && frame.freqs.length > 0 && usesVoices(inst)) {
-        const voices = startChord(offline, ws, inst, frame.freqs, startSec, frame.volume)
-        voices.forEach((v) => v.stop(endSec - 0.03, 0.06))
-      } else if (frame.mode === "gesture" && frame.freqs.length > 0) {
+      if (frame.mode === "gesture" && frame.freqs.length > 0) {
         frame.freqs.forEach((hz) => {
           const osc = offline.createOscillator()
           osc.type = "sawtooth"
@@ -262,9 +255,9 @@ class LoopTrack {
 
   removeStep(stepIdx: number) { this.stepMask[stepIdx] = false }
 
-  placeChord(stepIdx: number, chord: string, freqs: number[], volume: number, filterTilt: number, stepDurMs: number, instrument: Instrument = "synth") {
+  placeChord(stepIdx: number, chord: string, freqs: number[], volume: number, filterTilt: number, stepDurMs: number) {
     const t = stepIdx * stepDurMs
-    const frame: LoopFrame = { t, freqs, volume, filterTilt, chord, mode: "gesture", pitchHz: 0, thereminVol: 0, instrument }
+    const frame: LoopFrame = { t, freqs, volume, filterTilt, chord, mode: "gesture", pitchHz: 0, thereminVol: 0 }
     let insertAt = this.frames.length
     for (let i = 0; i < this.frames.length; i++) {
       if (this.frames[i].t > t) { insertAt = i; break }
@@ -284,7 +277,6 @@ class LoopTrack {
 }
 
 export class LoopEngine {
-  private instrument: Instrument = "synth"
   private ctx: AudioContext
   private bus: GainNode
   private tracks: LoopTrack[]
@@ -535,7 +527,7 @@ export class LoopEngine {
     const t = performance.now() - this.recordStart
     if (t >= this.loopDuration) { this.finishRecording(); return true }
     const stepIdx = Math.min(this.getTotalSteps() - 1, Math.floor(t / this.stepDurationMs()))
-    this.tracks[this.activeTrack].addFrame({ ...data, instrument: data.instrument ?? this.instrument, t }, stepIdx)
+    this.tracks[this.activeTrack].addFrame({ ...data, t }, stepIdx)
     return false
   }
 
@@ -624,15 +616,11 @@ export class LoopEngine {
     this.scheduleRebuild(trackIdx)
   }
 
-  setInstrument(instrument: Instrument) {
-    this.instrument = instrument
-  }
-
   placeChord(trackIdx: number, stepIdx: number, chord: string, freqs: number[], volume = 0.7, filterTilt = 0) {
     const track = this.tracks[trackIdx]
     if (!track) return
     if (track.stepMask.length === 0) track.init(this.getTotalSteps())
-    track.placeChord(stepIdx, chord, freqs, volume, filterTilt, this.stepDurationMs(), this.instrument)
+    track.placeChord(stepIdx, chord, freqs, volume, filterTilt, this.stepDurationMs())
     if (!track.playing && track.hasContent) {
       track.playing = true
       if (this.loopDuration === 0) this.loopDuration = this.gridDurationMs()

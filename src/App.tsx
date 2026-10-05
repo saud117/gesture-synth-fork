@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import { LoopEngine, type LoopState, type TrackInfo } from "./audio/LoopEngine"
 import { SynthEngine } from "./audio/SynthEngine"
-import type { Instrument } from "./audio/instruments"
 import { BeatGrid, CountInDisplay } from "./components/BeatGrid"
 import { HandCanvas } from "./components/HandCanvas"
 import { Hud } from "./components/Hud"
@@ -75,7 +74,6 @@ const EMPTY_TRACKS: TrackInfo[] = Array.from({ length: 4 }, () => ({
 export default function App() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const synthRef = useRef(new SynthEngine())
-  const [instrument, setInstrument] = useState<Instrument>("synth")
   const stabilizeRef = useRef(createChordStabilizer())
   const { status, error, handsRef } = useHandTracking(videoRef)
   const mode = "gesture" as const
@@ -227,12 +225,6 @@ export default function App() {
     stabilizeRef.current = createChordStabilizer()
     setLive(idleLive)
   }, [mode])
-
-  // Instrument selection: live synth + loop engine (loops keep the instrument they were recorded with)
-  useEffect(() => {
-    synthRef.current.setInstrument(instrument)
-    loopRef.current?.setInstrument(instrument)
-  }, [instrument, audioOn])
 
   // --- Main rAF loop ---
   useEffect(() => {
@@ -467,7 +459,6 @@ export default function App() {
     const ctx = synthRef.current.getContext()
     const bus = synthRef.current.getOutputBus()
     loopRef.current = new LoopEngine(ctx, bus)
-    loopRef.current.setInstrument(instrument)
     const bpm = practiceSong?.bpm ?? loopBpm
     loopRef.current.setGrid(bpm, loopBars)
     loopRef.current.setBeatsPerBar(loopBeatsPerBar)
@@ -728,8 +719,6 @@ export default function App() {
         octaveDown={live.octaveDown}
         statusText={statusText}
         scaleLabel={scaleLabel}
-        instrument={instrument}
-        onInstrumentChange={setInstrument}
       />
 
       <ScaleGuide
