@@ -12,6 +12,12 @@ The live version is hosted on Vercel.
 
 ![Gesture Synth Fork main interface](images/main-interface.png)
 
+## 🎥 Demo
+
+[![Gesture Synth Fork Demo](https://img.youtube.com/vi/p9xoF58brRE/maxresdefault.jpg)](https://youtu.be/p9xoF58brRE)
+
+▶️ [Watch the demo on YouTube](https://youtu.be/p9xoF58brRE)
+
 ### Settings & Custom Chords
 
 ![Gesture Synth Fork settings and custom chords](images/settings-panel.png)
