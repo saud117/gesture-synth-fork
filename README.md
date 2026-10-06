@@ -14,9 +14,7 @@ The live version is hosted on Vercel.
 
 ## 🎥 Demo
 
-[![Gesture Synth Fork Demo](https://img.youtube.com/vi/p9xoF58brRE/maxresdefault.jpg)](https://youtu.be/p9xoF58brRE)
-
-▶️ [Watch the demo on YouTube](https://youtu.be/p9xoF58brRE)
+[![Watch on YouTube](https://img.shields.io/badge/▶%20Watch%20Demo%20on%20YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtu.be/p9xoF58brRE)
 
 ### Settings & Custom Chords
 
